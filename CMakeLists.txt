@@ -5,3 +5,11 @@ find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
 project(blinky)
 
 target_sources(app PRIVATE src/main.c)
+
+# NORDIC SDK APP END
+zephyr_library_include_directories(. Includes/ Includes/CH101/)
+
+FILE(GLOB app_sources src/*.c src/CH101/*.c src/ESP32_WiFi_lib/*.c src/ESP32_WiFi_lib/utility/*.c src/IMU/*.c  src/IMU/util/*.c)
+target_sources(app PRIVATE ${app_sources})
+
+
